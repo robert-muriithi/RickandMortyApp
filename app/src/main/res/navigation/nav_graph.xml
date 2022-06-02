@@ -9,5 +9,24 @@
         android:id="@+id/charactersFragment"
         android:name="dev.robert.rickandmorty.ui.fragments.CharactersFragment"
         android:label="fragment_characters_list"
-        tools:layout="@layout/fragment_characters_list" />
+        tools:layout="@layout/fragment_characters_list" >
+        <action
+            android:id="@+id/action_charactersFragment_to_characterDetailsFragment"
+            app:destination="@id/characterDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailsFragment"
+        android:name="dev.robert.rickandmorty.ui.fragments.CharacterDetailsFragment"
+        android:label="fragment_character_details"
+        tools:layout="@layout/fragment_character_details" />
+    <fragment
+        android:id="@+id/characterLocationFragment"
+        android:name="dev.robert.rickandmorty.ui.fragments.CharacterLocationFragment"
+        android:label="fragment_character_location"
+        tools:layout="@layout/fragment_character_location" />
+    <fragment
+        android:id="@+id/settingsFragment2"
+        android:name="dev.robert.rickandmorty.ui.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

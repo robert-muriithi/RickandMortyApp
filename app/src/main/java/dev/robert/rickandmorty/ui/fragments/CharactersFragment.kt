@@ -164,7 +164,7 @@ class CharactersFragment : Fragment() {
         super.onResume()
         //setting the status bar color back
         requireActivity().window.statusBarColor =
-            ContextCompat.getColor(requireContext(), R.color.light_brown)
+            ContextCompat.getColor(requireContext(), R.color.black)
     }
 
     override fun onPause() {

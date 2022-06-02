@@ -27,6 +27,7 @@ class CharactersPagingAdapter :
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(character: CharactersResult?) {
             binding.name.text = character?.name
+            binding.tvStatus.text = character?.status
             Glide.with(binding.root.context)
                 .load(character?.image)
                 .listener(object : RequestListener<Drawable> {

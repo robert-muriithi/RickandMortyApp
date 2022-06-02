@@ -29,7 +29,6 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayout"
                 app:endIconMode="clear_text"
-                android:hint="Type something to search"
                 app:startIconDrawable="@drawable/ic_baseline_search"
                 app:startIconTint="@color/black"
                 android:layout_width="match_parent"
@@ -93,6 +92,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+    <TextView
+        android:padding="20dp"
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@ import dev.robert.rickandmorty.R
 import dev.robert.rickandmorty.databinding.FragmentCharacterLocationBinding
 
 @AndroidEntryPoint
-class CharacterLocationFragment : Fragment() {
+class CharacterDetailsFragment : Fragment() {
     private lateinit var binding: FragmentCharacterLocationBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

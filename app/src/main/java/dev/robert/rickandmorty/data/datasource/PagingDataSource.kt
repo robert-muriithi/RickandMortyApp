@@ -24,6 +24,15 @@ class PagingDataSource(
 
         return try {
             val response = apiService.getCharacters(pageNumber, searchQuery)
+
+            //Searching
+            val characters = if (searchQuery != null) {
+                response.charactersResults.filter {
+                    it.name.contains(searchQuery, true)
+                }
+            } else {
+                response.charactersResults
+            }
             var nextPage : Int? = null
             if(response.info.next.isNotEmpty()) {
                 val uri = Uri.parse(response.info.next)
@@ -31,7 +40,7 @@ class PagingDataSource(
 
             }
              LoadResult.Page(
-                data = response.charactersResults,
+                data = characters,
                 prevKey = null,
                 nextKey = nextPage
             )

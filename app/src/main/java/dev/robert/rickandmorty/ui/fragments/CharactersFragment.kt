@@ -1,13 +1,19 @@
 package dev.robert.rickandmorty.ui.fragments
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +43,7 @@ class CharactersFragment : Fragment() {
         val view = binding.root
         setAdapter()
         setRefresh()
+        setUpSearchView()
 
         return view
     }
@@ -49,6 +56,7 @@ class CharactersFragment : Fragment() {
             editText?.text = null
             isFocusable = false
         }
+        hideSoftKeyboard()
     }
 
     private fun getCharacter(searchString: String?, shouldPerformSearch: Boolean) {
@@ -61,7 +69,6 @@ class CharactersFragment : Fragment() {
                 adapter.submitData(it)
             }
         }
-
     }
 
     private fun setAdapter() {
@@ -86,14 +93,86 @@ class CharactersFragment : Fragment() {
                     }
                 }
             })
+            adapter.addLoadStateListener { loadState ->
+                if (loadState.refresh is LoadState.Loading && adapter.snapshot().isEmpty()) {
+                    binding.progressCircular.isVisible = true
+                    binding.swipeRefreshLayout.isRefreshing = false
+                } else {
+                    binding.progressCircular.isVisible = false
+                    binding.swipeRefreshLayout.isRefreshing = false
+                }
+                //if there is error a textview will show the error encountered.
+                val error = when {
+                    loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+                    loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+                    loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+
+                    else -> null
+                }
+                if (adapter.snapshot().isEmpty()){
+                    error?.let {
+                        binding.errorTextView.text = if (it.error.localizedMessage.toString() == "HTTP 404") ({
+                            binding.errorTextView.text = getString(R.string.no_results_found)
+                        }).toString()
+                        else {
+                            it.error.localizedMessage
+                        }
+                        binding.errorTextView.isVisible = true
+                    }
+                }
+                else
+                    binding.errorTextView.isVisible = false
+            }
         }
 
     }
 
-    fun performSearch(searchString: String) {
+    private fun performSearch(searchString: String) {
         if (searchString.isNotEmpty()) {
             getCharacter(searchString, true)
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setUpSearchView(){
+        binding.inputLayout.editText?.apply {
+            setOnTouchListener { _, motionEvent ->
+                if (motionEvent.action == 0) {
+                    binding.searchView.isFocusable = true
+                    binding.searchView.isFocusableInTouchMode = true
+                    binding.searchView.requestFocus()
+                    return@setOnTouchListener true
+                }
+                false
+            }
+            setOnEditorActionListener { _, _, _ ->
+                performSearch(binding.inputLayout.editText?.text.toString())
+                hideSoftKeyboard()
+                true
+            }
+        }
+    }
+
+
+    private fun hideSoftKeyboard() {
+        val view = requireActivity().currentFocus
+        view?.let {
+            val inputMethodManager =
+                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+
+    }
+    override fun onResume() {
+        super.onResume()
+        //setting the status bar color back
+        requireActivity().window.statusBarColor =
+            ContextCompat.getColor(requireContext(), R.color.light_brown)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.searchView.isFocusable = false
     }
 
 }

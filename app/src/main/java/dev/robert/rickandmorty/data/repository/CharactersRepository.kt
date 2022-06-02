@@ -21,4 +21,8 @@ class CharactersRepository @Inject constructor(
         }
     ).flow
 
+    suspend fun getSingleCharacter(id: Int) = safeApiCall {
+        apiService.getCharacterDetails(id)
+    }
+
 }

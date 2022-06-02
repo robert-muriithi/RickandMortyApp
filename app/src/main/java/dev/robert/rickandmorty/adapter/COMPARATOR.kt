@@ -8,7 +8,7 @@ object COMPARATOR : DiffUtil.ItemCallback<CharactersResult>() {
         oldItem: CharactersResult,
         newItem: CharactersResult
     ): Boolean {
-        return oldItem == newItem
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(

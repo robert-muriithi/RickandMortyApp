@@ -8,8 +8,8 @@ interface ApiService {
 
     @GET("character")
     suspend fun getCharacters(
-        @Query("offset") offset : Int,
-        @Query("limit") limit : Int
+        @Query("page") page: Int,
+        @Query("name")name:String?= null
     ) : CharactersResponse
 
 }

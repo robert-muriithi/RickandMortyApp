@@ -11,7 +11,7 @@ import java.io.IOException
 class PagingDataSource(
     private val apiService: ApiService,
     private val searchQuery: String?
-) : PagingSource<Int, CharactersResult>(){
+) : PagingSource<Int, CharactersResult>() {
     override fun getRefreshKey(state: PagingState<Int, CharactersResult>): Int? {
         return state.anchorPosition
     }
@@ -33,13 +33,13 @@ class PagingDataSource(
             } else {
                 response.charactersResults
             }
-            var nextPage : Int? = null
-            if(response.info.next.isNotEmpty()) {
+            var nextPage: Int? = null
+            if (response.info.next.isNotEmpty()) {
                 val uri = Uri.parse(response.info.next)
                 nextPage = uri.getQueryParameter("page")?.toInt()
 
             }
-             LoadResult.Page(
+            LoadResult.Page(
                 data = characters,
                 prevKey = null,
                 nextKey = nextPage

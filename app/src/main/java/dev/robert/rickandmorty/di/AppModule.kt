@@ -26,11 +26,12 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit : Retrofit) : ApiService = retrofit.create(ApiService::class.java)
+    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
     @Provides
     @Singleton
-    fun provideRepository(apiService: ApiService) : CharactersRepository = CharactersRepository(apiService)
+    fun provideRepository(apiService: ApiService): CharactersRepository =
+        CharactersRepository(apiService)
 
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
@@ -39,7 +40,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideOkHttp3Client(cache: Cache) : OkHttpClient {
+    fun provideOkHttp3Client(cache: Cache): OkHttpClient {
 
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(20, TimeUnit.SECONDS)
@@ -55,16 +56,16 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCache(@ApplicationContext context: Context) : Cache {
+    fun provideCache(@ApplicationContext context: Context): Cache {
         return Cache(
             File(context.applicationContext.cacheDir, "rick_morty_dir"),
-            10*1024*1024
+            10 * 1024 * 1024
         )
     }
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient) : Retrofit{
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

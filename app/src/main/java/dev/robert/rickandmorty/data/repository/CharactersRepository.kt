@@ -8,12 +8,13 @@ import javax.inject.Inject
 
 class CharactersRepository @Inject constructor(
     private val apiService: ApiService
-) : BaseRepository(){
+) : BaseRepository() {
 
-     fun getCharacters(searchString: String?) = Pager(
+    fun getCharacters(searchString: String?) = Pager(
         config = PagingConfig(
             enablePlaceholders = false,
-            pageSize = 50),
+            pageSize = 50
+        ),
         pagingSourceFactory = {
             PagingDataSource(
                 apiService, searchString

@@ -7,13 +7,12 @@ import retrofit2.HttpException
 
 open class BaseRepository {
     suspend fun <T> safeApiCall(
-        apiCall : suspend () -> T
-    ) :Resource <T> {
-        return withContext(Dispatchers.IO){
+        apiCall: suspend () -> T
+    ): Resource<T> {
+        return withContext(Dispatchers.IO) {
             try {
                 Resource.Success(apiCall.invoke())
-            }
-            catch (throwable: Throwable) {
+            } catch (throwable: Throwable) {
                 when (throwable) {
                     is HttpException -> {
                         Resource.Failure(throwable.response()?.errorBody().toString(), null)

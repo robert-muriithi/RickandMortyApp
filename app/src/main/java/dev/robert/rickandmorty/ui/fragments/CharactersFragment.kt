@@ -3,16 +3,15 @@ package dev.robert.rickandmorty.ui.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,8 +31,6 @@ class CharactersFragment : Fragment() {
     private val viewModel: CharactersMainViewModel by viewModels()
     private val adapter: CharactersPagingAdapter by lazy { CharactersPagingAdapter() }
     private var job: Job? = null
-    private var hasUserSearched = false
-    private var hasInitiatedInitialCall = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -77,17 +74,16 @@ class CharactersFragment : Fragment() {
             recyclerView.adapter = adapter
             adapter.addLoadStateListener { }
             getCharacter(null, false)
-            recyclerView.addOnScrollListener(object  : RecyclerView.OnScrollListener(){
+            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
                     val scrollPosition = (recyclerView
                         .layoutManager as? LinearLayoutManager)?.findFirstVisibleItemPosition()
 
-                    if (scrollPosition != null){
-                        if (scrollPosition >= 1){
+                    if (scrollPosition != null) {
+                        if (scrollPosition >= 1) {
                             //do something
-                        }
-                        else {
+                        } else {
                             //do something
                         }
                     }
@@ -109,18 +105,18 @@ class CharactersFragment : Fragment() {
 
                     else -> null
                 }
-                if (adapter.snapshot().isEmpty()){
+                if (adapter.snapshot().isEmpty()) {
                     error?.let {
-                        binding.errorTextView.text = if (it.error.localizedMessage.toString() == "HTTP 404") ({
-                            binding.errorTextView.text = getString(R.string.no_results_found)
-                        }).toString()
-                        else {
-                            it.error.localizedMessage
-                        }
+                        binding.errorTextView.text =
+                            if (it.error.localizedMessage.toString() == "HTTP 404") ({
+                                binding.errorTextView.text = getString(R.string.no_results_found)
+                            }).toString()
+                            else {
+                                it.error.localizedMessage
+                            }
                         binding.errorTextView.isVisible = true
                     }
-                }
-                else
+                } else
                     binding.errorTextView.isVisible = false
             }
         }
@@ -134,7 +130,7 @@ class CharactersFragment : Fragment() {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setUpSearchView(){
+    private fun setUpSearchView() {
         binding.inputLayout.editText?.apply {
             setOnTouchListener { _, motionEvent ->
                 if (motionEvent.action == 0) {
@@ -163,6 +159,7 @@ class CharactersFragment : Fragment() {
         }
 
     }
+
     override fun onResume() {
         super.onResume()
         //setting the status bar color back

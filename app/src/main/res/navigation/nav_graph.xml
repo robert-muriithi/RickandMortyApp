@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_charactersFragment_to_characterDetailsFragment"
             app:destination="@id/characterDetailsFragment" />
+        <action
+            android:id="@+id/action_charactersFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
     </fragment>
     <fragment
         android:id="@+id/characterDetailsFragment"
@@ -29,4 +32,9 @@
         android:name="dev.robert.rickandmorty.ui.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="dev.robert.rickandmorty.ui.fragments.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter" />
 </navigation>

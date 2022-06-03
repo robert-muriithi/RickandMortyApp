@@ -12,10 +12,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.rickandmorty.R
 import dev.robert.rickandmorty.adapter.CharactersPagingAdapter
@@ -41,9 +44,17 @@ class CharactersFragment : Fragment() {
         setAdapter()
         setRefresh()
         setUpSearchView()
+        filterCharacters()
 
         return view
     }
+
+    private fun filterCharacters() {
+        binding.filterImageView.setOnClickListener {
+            findNavController().navigate(R.id.action_charactersFragment_to_filterFragment)
+        }
+    }
+
 
     private fun setRefresh() {
         binding.swipeRefreshLayout.setOnRefreshListener {

@@ -21,7 +21,17 @@
         android:id="@+id/characterDetailsFragment"
         android:name="dev.robert.rickandmorty.ui.fragments.CharacterDetailsFragment"
         android:label="fragment_character_details"
-        tools:layout="@layout/fragment_character_details" />
+        tools:layout="@layout/fragment_character_details" >
+        <argument
+            android:name="character_details"
+            app:argType="dev.robert.rickandmorty.model.CharactersResult" />
+        <argument
+            android:name="picture"
+            app:argType="string" />
+        <argument
+            android:name="color"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/characterLocationFragment"
         android:name="dev.robert.rickandmorty.ui.fragments.CharacterLocationFragment"
@@ -36,5 +46,9 @@
         android:id="@+id/filterFragment"
         android:name="dev.robert.rickandmorty.ui.fragments.FilterFragment"
         android:label="fragment_filter"
-        tools:layout="@layout/fragment_filter" />
+        tools:layout="@layout/fragment_filter" >
+        <action
+            android:id="@+id/action_filterFragment_to_charactersFragment"
+            app:destination="@id/charactersFragment" />
+    </fragment>
 </navigation>

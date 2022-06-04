@@ -1,8 +1,11 @@
 package dev.robert.rickandmorty.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Info(
     @SerializedName("count")
     val count: Int,
@@ -12,4 +15,4 @@ data class Info(
     val pages: Int,
     @SerializedName("prev")
     val prev: String
-)
+) : Parcelable

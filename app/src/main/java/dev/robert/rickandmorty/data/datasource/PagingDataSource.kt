@@ -34,7 +34,7 @@ class PagingDataSource(
                 response.charactersResults
             }
             var nextPage: Int? = null
-            if (response.info.next.isNotEmpty()) {
+            if (response.info.next != null) {
                 val uri = Uri.parse(response.info.next)
                 nextPage = uri.getQueryParameter("page")?.toInt()
 

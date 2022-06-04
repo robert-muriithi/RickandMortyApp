@@ -17,6 +17,7 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +33,14 @@ import kotlinx.coroutines.launch
 class CharactersFragment : Fragment() {
     private lateinit var binding: FragmentCharactersListBinding
     private val viewModel: CharactersMainViewModel by viewModels()
-    private val adapter: CharactersPagingAdapter by lazy { CharactersPagingAdapter() }
+    private val adapter: CharactersPagingAdapter by lazy { CharactersPagingAdapter(
+        CharactersPagingAdapter.OnclickListener { results, picture, color ->
+            findNavController().navigate(
+                CharactersFragmentDirections.actionCharactersFragmentToCharacterDetailsFragment(
+                    results, picture, color
+                )
+            )
+        }) }
     private var job: Job? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -176,6 +184,8 @@ class CharactersFragment : Fragment() {
         //setting the status bar color back
         requireActivity().window.statusBarColor =
             ContextCompat.getColor(requireContext(), R.color.black)
+        val navBar = activity!!.findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        navBar.visibility = View.VISIBLE
     }
 
     override fun onPause() {

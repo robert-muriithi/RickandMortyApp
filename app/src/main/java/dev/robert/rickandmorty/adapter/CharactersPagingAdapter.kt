@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
@@ -15,13 +16,15 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import dev.robert.rickandmorty.R
+import dev.robert.rickandmorty.api.ApiService
 import dev.robert.rickandmorty.databinding.CharacterListItemBinding
 import dev.robert.rickandmorty.model.CharactersResult
+import javax.inject.Inject
 
-class CharactersPagingAdapter :
+class CharactersPagingAdapter (private val onclickListener: OnclickListener)  :
     PagingDataAdapter<CharactersResult, CharactersPagingAdapter.CharactersViewHolder>(COMPARATOR) {
     var vibrantColor = 0
-
+    var picture = ""
     inner class CharactersViewHolder(
         private val binding: CharacterListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -53,7 +56,7 @@ class CharactersPagingAdapter :
                         val bitmap = drawable.bitmap
                         Palette.Builder(bitmap).generate {
                             it?.let { palette ->
-                                vibrantColor = palette.getVibrantColor(
+                                vibrantColor = palette.getDominantColor(
                                     ContextCompat.getColor(
                                         binding.root.context,
                                         R.color.white
@@ -76,6 +79,9 @@ class CharactersPagingAdapter :
         position: Int
     ) {
         val character = getItem(position)
+        holder.itemView.setOnClickListener {
+            onclickListener.onClick(character!!, picture, vibrantColor )
+        }
         holder.bind(character)
     }
 
@@ -92,5 +98,8 @@ class CharactersPagingAdapter :
         )
     }
 
+    class OnclickListener(val clickListener: (character: CharactersResult, picture : String, color : Int ) -> Unit) {
+        fun onClick(character: CharactersResult, picture : String, color : Int) = clickListener(character, picture, color)
+    }
 
 }

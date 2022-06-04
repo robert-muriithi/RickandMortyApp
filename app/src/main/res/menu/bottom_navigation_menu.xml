@@ -10,6 +10,10 @@
         android:icon="@drawable/ic_location"
         android:title="Location" />
 
+    <item android:id="@+id/episodesFragment"
+        android:title="Episodes"
+        android:icon="@drawable/ic_episodes"/>
+
     <item
         android:id="@+id/settingsFragment2"
         android:icon="@drawable/ic_settings"

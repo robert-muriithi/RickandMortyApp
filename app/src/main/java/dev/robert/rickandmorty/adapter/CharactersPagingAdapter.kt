@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
@@ -16,10 +15,8 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import dev.robert.rickandmorty.R
-import dev.robert.rickandmorty.api.ApiService
 import dev.robert.rickandmorty.databinding.CharacterListItemBinding
 import dev.robert.rickandmorty.model.CharactersResult
-import javax.inject.Inject
 
 class CharactersPagingAdapter (private val onclickListener: OnclickListener)  :
     PagingDataAdapter<CharactersResult, CharactersPagingAdapter.CharactersViewHolder>(COMPARATOR) {

@@ -8,7 +8,7 @@ import dev.robert.rickandmorty.model.CharactersResult
 import retrofit2.HttpException
 import java.io.IOException
 
-class PagingDataSource(
+class CharactersDataSource(
     private val apiService: ApiService,
     private val searchQuery: String?
 ) : PagingSource<Int, CharactersResult>() {

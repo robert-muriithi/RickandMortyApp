@@ -8,7 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dev.robert.rickandmorty.BuildConfig
 import dev.robert.rickandmorty.api.ApiService
-import dev.robert.rickandmorty.data.repository.CharactersRepository
+import dev.robert.rickandmorty.data.repository.MainApiRepository
 import dev.robert.rickandmorty.utils.BASE_URL
 import okhttp3.Cache
 import okhttp3.Interceptor
@@ -30,8 +30,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepository(apiService: ApiService): CharactersRepository =
-        CharactersRepository(apiService)
+    fun provideRepository(apiService: ApiService): MainApiRepository =
+        MainApiRepository(apiService)
 
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {

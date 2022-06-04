@@ -6,22 +6,21 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.robert.rickandmorty.data.repository.MainApiRepository
-import dev.robert.rickandmorty.model.CharactersResult
+import dev.robert.rickandmorty.model.episodes.EpisodesResult
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
-class CharactersMainViewModel
-@Inject constructor(
+class EpisodesViewModel @Inject constructor(
     private val repository: MainApiRepository
 ) : ViewModel() {
 
-    private var currentResults: Flow<PagingData<CharactersResult>>? = null
+    private var currentList : Flow<PagingData<EpisodesResult>>? = null
 
-    fun getCharacters(searchString: String?): Flow<PagingData<CharactersResult>> {
-        val newList = repository.getCharacters(searchString).cachedIn(viewModelScope)
-        currentResults = newList
-        return newList
+    fun getEpisodes( name : String) : Flow<PagingData<EpisodesResult>> {
+        if (currentList == null) {
+            currentList = repository.getEpisodes(name).cachedIn(viewModelScope)
+        }
+        return currentList!!
     }
-
 }

@@ -81,7 +81,11 @@ class CharacterDetailsFragment : Fragment() {
         binding.detailsToolbar.setNavigationOnClickListener {
             binding.root.findNavController().navigateUp()
         }
+
+
+
         return view
     }
+
 
 }

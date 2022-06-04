@@ -9,22 +9,36 @@
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/card_bg.xml" value="0.1675" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_alive.xml" value="0.155" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_baseline_search.xml" value="0.1455" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_calender.xml" value="0.1675" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_close.xml" value="0.2075" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_dead.xml" value="0.155" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_down.xml" value="0.1675" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_female.xml" value="0.155" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_filter.xml" value="0.155" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_gender.xml" value="0.1675" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_locat.xml" value="0.1675" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_location.xml" value="0.1675" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_male.xml" value="0.1675" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_origin.xml" value="0.1675" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_settings.xml" value="0.1675" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_species.xml" value="0.1675" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_species2.xml" value="0.1675" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_transgender.xml" value="0.1675" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/ic_unkown.xml" value="0.1675" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/search_background.xml" value="0.1455" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout-v24/fragment_character_location.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/activity_main.xml" value="0.19479166666666667" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/character_list_item.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/episodes_list_item.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_character_details.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_character_location.xml" value="0.19479166666666667" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_character_location.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_character_location2.xml" value="0.1859375" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_characters_list.xml" value="0.2986003110419907" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_episodes.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_filter.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_rick_and_morty_list.xml" value="0.19479166666666667" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_settings.xml" value="0.1859375" />
+        <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/location_list_item.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/RickandMorty/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2" />
       </map>
     </option>

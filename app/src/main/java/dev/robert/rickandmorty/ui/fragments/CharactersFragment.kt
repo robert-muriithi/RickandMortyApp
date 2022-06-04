@@ -91,7 +91,6 @@ class CharactersFragment : Fragment() {
 
         binding.apply {
             recyclerView.adapter = adapter
-            adapter.addLoadStateListener { }
             getCharacter(null, false)
             recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {

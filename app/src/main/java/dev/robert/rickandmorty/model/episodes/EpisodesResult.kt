@@ -1,9 +1,9 @@
-package dev.robert.rickandmorty.model.location
+package dev.robert.rickandmorty.model.episodes
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Result(
+data class EpisodesResult(
     @SerializedName("created")
     val created: String,
     @SerializedName("dimension")

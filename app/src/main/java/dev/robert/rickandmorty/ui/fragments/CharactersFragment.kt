@@ -12,10 +12,14 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.robert.rickandmorty.R
 import dev.robert.rickandmorty.adapter.CharactersPagingAdapter
@@ -29,7 +33,14 @@ import kotlinx.coroutines.launch
 class CharactersFragment : Fragment() {
     private lateinit var binding: FragmentCharactersListBinding
     private val viewModel: CharactersMainViewModel by viewModels()
-    private val adapter: CharactersPagingAdapter by lazy { CharactersPagingAdapter() }
+    private val adapter: CharactersPagingAdapter by lazy { CharactersPagingAdapter(
+        CharactersPagingAdapter.OnclickListener { results, picture, color ->
+            findNavController().navigate(
+                CharactersFragmentDirections.actionCharactersFragmentToCharacterDetailsFragment(
+                    results, picture, color
+                )
+            )
+        }) }
     private var job: Job? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,9 +52,17 @@ class CharactersFragment : Fragment() {
         setAdapter()
         setRefresh()
         setUpSearchView()
+        filterCharacters()
 
         return view
     }
+
+    private fun filterCharacters() {
+        binding.filterImageView.setOnClickListener {
+            findNavController().navigate(R.id.action_charactersFragment_to_filterFragment)
+        }
+    }
+
 
     private fun setRefresh() {
         binding.swipeRefreshLayout.setOnRefreshListener {
@@ -164,7 +183,9 @@ class CharactersFragment : Fragment() {
         super.onResume()
         //setting the status bar color back
         requireActivity().window.statusBarColor =
-            ContextCompat.getColor(requireContext(), R.color.light_brown)
+            ContextCompat.getColor(requireContext(), R.color.black)
+        val navBar = activity!!.findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        navBar.visibility = View.VISIBLE
     }
 
     override fun onPause() {

@@ -18,7 +18,7 @@ open class BaseRepository {
                         Resource.Failure(throwable.response()?.errorBody().toString(), null)
                     }
                     else -> {
-                        Resource.Failure(throwable.localizedMessage, null)
+                        Resource.Failure(throwable.message.toString(), null)
                     }
                 }
             }

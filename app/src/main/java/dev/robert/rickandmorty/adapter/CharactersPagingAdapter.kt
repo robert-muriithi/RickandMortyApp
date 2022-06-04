@@ -18,15 +18,16 @@ import dev.robert.rickandmorty.R
 import dev.robert.rickandmorty.databinding.CharacterListItemBinding
 import dev.robert.rickandmorty.model.CharactersResult
 
-class CharactersPagingAdapter :
+class CharactersPagingAdapter (private val onclickListener: OnclickListener)  :
     PagingDataAdapter<CharactersResult, CharactersPagingAdapter.CharactersViewHolder>(COMPARATOR) {
     var vibrantColor = 0
-
+    var picture = ""
     inner class CharactersViewHolder(
         private val binding: CharacterListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(character: CharactersResult?) {
             binding.name.text = character?.name
+            binding.tvStatus.text = character?.status
             Glide.with(binding.root.context)
                 .load(character?.image)
                 .listener(object : RequestListener<Drawable> {
@@ -52,7 +53,7 @@ class CharactersPagingAdapter :
                         val bitmap = drawable.bitmap
                         Palette.Builder(bitmap).generate {
                             it?.let { palette ->
-                                vibrantColor = palette.getVibrantColor(
+                                vibrantColor = palette.getDominantColor(
                                     ContextCompat.getColor(
                                         binding.root.context,
                                         R.color.white
@@ -75,6 +76,9 @@ class CharactersPagingAdapter :
         position: Int
     ) {
         val character = getItem(position)
+        holder.itemView.setOnClickListener {
+            onclickListener.onClick(character!!, picture, vibrantColor )
+        }
         holder.bind(character)
     }
 
@@ -91,5 +95,8 @@ class CharactersPagingAdapter :
         )
     }
 
+    class OnclickListener(val clickListener: (character: CharactersResult, picture : String, color : Int ) -> Unit) {
+        fun onClick(character: CharactersResult, picture : String, color : Int) = clickListener(character, picture, color)
+    }
 
 }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.robert.rickandmorty.databinding.EpisodesListItemBinding
 import dev.robert.rickandmorty.model.CharactersResult
 
-class EpisodesAdapter (private val episodes : List<String>) :
+class EpisodesAdapter(private val episodes: List<String>) :
     ListAdapter<CharactersResult, EpisodesAdapter.EpisodesViewHolder>(EpisodesDiffCallback) {
     inner class EpisodesViewHolder(val binding: EpisodesListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

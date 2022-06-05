@@ -23,12 +23,12 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CharacterLocationFragment : Fragment() {
     private lateinit var binding: FragmentCharacterLocationBinding
-    private val adapter : LocationPagingAdapter by lazy {
+    private val adapter: LocationPagingAdapter by lazy {
         LocationPagingAdapter()
     }
-    private val viewModel : CharacterLocationViewModel by viewModels()
+    private val viewModel: CharacterLocationViewModel by viewModels()
 
-    var job : Job? = null
+    var job: Job? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,7 +58,7 @@ class CharacterLocationFragment : Fragment() {
 
     private fun setupAdapter() {
         binding.locationRecyclerView.adapter = adapter
-       // binding.locProgressBar.isVisible = true
+        // binding.locProgressBar.isVisible = true
         adapter.addLoadStateListener { loadState ->
             binding.locProgressBar.isVisible =
                 loadState.refresh is LoadState.Loading && adapter.snapshot().isEmpty()

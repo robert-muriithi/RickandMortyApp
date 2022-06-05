@@ -33,14 +33,16 @@ import kotlinx.coroutines.launch
 class CharactersFragment : Fragment() {
     private lateinit var binding: FragmentCharactersListBinding
     private val viewModel: CharactersMainViewModel by viewModels()
-    private val adapter: CharactersPagingAdapter by lazy { CharactersPagingAdapter(
-        CharactersPagingAdapter.OnclickListener { results, picture, color ->
-            findNavController().navigate(
-                CharactersFragmentDirections.actionCharactersFragmentToCharacterDetailsFragment(
-                    results, picture, color
+    private val adapter: CharactersPagingAdapter by lazy {
+        CharactersPagingAdapter(
+            CharactersPagingAdapter.OnclickListener { results, picture, color ->
+                findNavController().navigate(
+                    CharactersFragmentDirections.actionCharactersFragmentToCharacterDetailsFragment(
+                        results, picture, color
+                    )
                 )
-            )
-        }) }
+            })
+    }
     private var job: Job? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

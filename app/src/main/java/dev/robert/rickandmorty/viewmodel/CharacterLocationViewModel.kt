@@ -17,9 +17,9 @@ class CharacterLocationViewModel @Inject constructor(
     private val repository: MainApiRepository
 ) : ViewModel() {
 
-    private var currentLocationList : Flow<PagingData<LocationsResult>>? = null
+    private var currentLocationList: Flow<PagingData<LocationsResult>>? = null
 
-    fun getLocationList() : Flow<PagingData<LocationsResult>>{
+    fun getLocationList(): Flow<PagingData<LocationsResult>> {
         val newLocationList = repository.getLocation().cachedIn(viewModelScope)
         currentLocationList = newLocationList
         return newLocationList

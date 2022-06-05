@@ -26,11 +26,11 @@ import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class CharacterDetailsFragment : Fragment() {
-    private lateinit var binding :  FragmentCharacterDetailsBinding
+    private lateinit var binding: FragmentCharacterDetailsBinding
     private val viewModel: CharacterDetailsViewModel by viewModels()
-    private val args : CharacterDetailsFragmentArgs by navArgs()
-    private val adapter : EpisodesAdapter by lazy { EpisodesAdapter(episodes) }
-    private var job : Job? = null
+    private val args: CharacterDetailsFragmentArgs by navArgs()
+    private val adapter: EpisodesAdapter by lazy { EpisodesAdapter(episodes) }
+    private var job: Job? = null
     val episodes: ArrayList<String> = ArrayList()
 
     override fun onCreateView(

@@ -19,7 +19,7 @@ import dev.robert.rickandmorty.databinding.CharacterListItemBinding
 import dev.robert.rickandmorty.model.CharactersResult
 
 class CharactersPagingAdapter (private val onclickListener: OnclickListener)  :
-    PagingDataAdapter<CharactersResult, CharactersPagingAdapter.CharactersViewHolder>(COMPARATOR) {
+    PagingDataAdapter<CharactersResult, CharactersPagingAdapter.CharactersViewHolder>(CharactersDiffCallback) {
     var vibrantColor = 0
     var picture = ""
     inner class CharactersViewHolder(

@@ -6,8 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.EpisodesFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/episodeToolbar"
+    <com.google.android.material.appbar.MaterialToolbar
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        android:theme="@style/MyThemeOverlay_Toolbar2"
+        android:background="@color/black"
+        android:id="@+id/episodesToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

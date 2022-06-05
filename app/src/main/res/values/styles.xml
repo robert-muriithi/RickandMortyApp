@@ -18,4 +18,10 @@
         <item name="cornerSizeBottomRight">50dp</item>
         <item name="cornerSizeBottomLeft">50dp</item>
     </style>
+
+    <style name="MyThemeOverlay_Toolbar2" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <!-- This attributes is used by navigation icon and overflow icon -->
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
 </resources>

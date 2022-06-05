@@ -18,10 +18,13 @@ import dev.robert.rickandmorty.R
 import dev.robert.rickandmorty.databinding.CharacterListItemBinding
 import dev.robert.rickandmorty.model.CharactersResult
 
-class CharactersPagingAdapter (private val onclickListener: OnclickListener)  :
-    PagingDataAdapter<CharactersResult, CharactersPagingAdapter.CharactersViewHolder>(CharactersDiffCallback) {
+class CharactersPagingAdapter(private val onclickListener: OnclickListener) :
+    PagingDataAdapter<CharactersResult, CharactersPagingAdapter.CharactersViewHolder>(
+        CharactersDiffCallback
+    ) {
     var vibrantColor = 0
     var picture = ""
+
     inner class CharactersViewHolder(
         private val binding: CharacterListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -77,7 +80,7 @@ class CharactersPagingAdapter (private val onclickListener: OnclickListener)  :
     ) {
         val character = getItem(position)
         holder.itemView.setOnClickListener {
-            onclickListener.onClick(character!!, picture, vibrantColor )
+            onclickListener.onClick(character!!, picture, vibrantColor)
         }
         holder.bind(character)
     }
@@ -95,8 +98,9 @@ class CharactersPagingAdapter (private val onclickListener: OnclickListener)  :
         )
     }
 
-    class OnclickListener(val clickListener: (character: CharactersResult, picture : String, color : Int ) -> Unit) {
-        fun onClick(character: CharactersResult, picture : String, color : Int) = clickListener(character, picture, color)
+    class OnclickListener(val clickListener: (character: CharactersResult, picture: String, color: Int) -> Unit) {
+        fun onClick(character: CharactersResult, picture: String, color: Int) =
+            clickListener(character, picture, color)
     }
 
 }

@@ -13,7 +13,7 @@ import dev.robert.rickandmorty.databinding.FragmentSettingsBinding
 
 @AndroidEntryPoint
 class SettingsFragment : Fragment() {
-    private lateinit var binding : FragmentSettingsBinding
+    private lateinit var binding: FragmentSettingsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

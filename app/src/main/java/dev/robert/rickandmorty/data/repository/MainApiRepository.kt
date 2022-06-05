@@ -27,21 +27,6 @@ class MainApiRepository @Inject constructor(
         apiService.getCharacterDetails(id)
     }
 
-    fun getEpisodes(name : String) = Pager(
-        config = PagingConfig(
-            enablePlaceholders = false,
-            pageSize = 50
-        ),
-        pagingSourceFactory = {
-            EpisodesDataSource(
-                apiService, name
-            )
-        }
-    ).flow
-
-    suspend fun getSingleEpisode(id: Int) = safeApiCall {
-        apiService.getSingleEpisode(id)
-    }
 
     fun getLocation() = Pager(
         config = PagingConfig(

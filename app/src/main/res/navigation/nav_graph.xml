@@ -51,9 +51,4 @@
             android:id="@+id/action_filterFragment_to_charactersFragment"
             app:destination="@id/charactersFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/episodesFragment"
-        android:name="dev.robert.rickandmorty.ui.fragments.EpisodesFragment"
-        android:label="fragment_episodes"
-        tools:layout="@layout/fragment_episodes" />
 </navigation>

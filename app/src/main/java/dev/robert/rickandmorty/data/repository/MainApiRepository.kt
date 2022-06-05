@@ -4,7 +4,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import dev.robert.rickandmorty.api.ApiService
 import dev.robert.rickandmorty.data.datasource.CharactersDataSource
-import dev.robert.rickandmorty.data.datasource.EpisodesDataSource
 import dev.robert.rickandmorty.data.datasource.LocationDataSource
 import javax.inject.Inject
 

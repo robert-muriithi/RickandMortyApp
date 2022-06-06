@@ -1,5 +1,7 @@
-# RickandMortyTask
-This repo was made with the purpose of  showing details on how to use paging 3 with retrofit and LiveData/Flow. It also used  MVVM architecture with Dagger Hilt for dependency injection
+# RickandMorty
+This repo was made with the purpose of  showing details on how to use paging 3 with retrofit and LiveData/Flow. It also used  MVVM architecture with Dagger Hilt for dependency injection.
+
+**The app is still on development. Not fully complete**
 
 # Libraries
 - [Navigation Components](https://developer.android.com/guide/navigation/navigation-getting-started) -  Helps you implement navigation, from simple button clicks to more complex patterns, such as app bars and the navigation drawer.
